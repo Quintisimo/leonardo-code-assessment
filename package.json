@@ -1,0 +1,22 @@
+{
+  "name": "leonardo-code-assessment",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "prisma generate",
+    "dev": "ts-node src/server.ts"
+  },
+  "author": "Quintus Cardozo",
+  "devDependencies": {
+    "@types/node": "^20.5.9",
+    "prisma": "^5.2.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@prisma/client": "5.2.0",
+    "fastify": "^4.22.2",
+    "fastify-type-provider-zod": "^1.1.9",
+    "prisma-zod-generator": "^0.8.13",
+    "zod": "^3.22.2"
+  }
+}

@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator zod {
+  provider = "prisma-zod-generator"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Schedule {
+  id         String   @id @default(uuid()) @db.Uuid
+  account_id Int
+  agent_id   Int
+  start_time DateTime
+  end_time   DateTime
+  Tasks      Tasks[]
+}
+
+model Tasks {
+  id          String   @id @default(uuid()) @db.Uuid
+  account_id  Int
+  schedule_id String   @db.Uuid
+  schedule    Schedule @relation(fields: [schedule_id], references: [id])
+  start_time  DateTime
+  duration    Int
+  type        TaskType
+}
+
+enum TaskType {
+  break
+  work
+}
