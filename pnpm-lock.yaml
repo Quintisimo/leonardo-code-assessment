@@ -5,12 +5,18 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fastify/helmet':
+    specifier: ^11.0.0
+    version: 11.0.0
   '@prisma/client':
     specifier: 5.2.0
     version: 5.2.0(prisma@5.2.0)
   fastify:
     specifier: ^4.22.2
     version: 4.22.2
+  fastify-healthcheck:
+    specifier: ^4.4.0
+    version: 4.4.0
   fastify-type-provider-zod:
     specifier: ^1.1.9
     version: 1.1.9(fastify@4.22.2)(zod@3.22.2)
@@ -64,6 +70,20 @@ packages:
     resolution: {integrity: sha512-aZAXGYo6m22Fk1zZzEUKBvut/CIIQe/BapEORnxiD5Qr0kPHqqI69NtEMCme74h+at72sPhbkb4ZrLd1W3KRLA==}
     dependencies:
       fast-json-stringify: 5.8.0
+    dev: false
+
+  /@fastify/helmet@11.0.0:
+    resolution: {integrity: sha512-YSFhJFR4Pk2azmTkX54f0Z/O7h5j4ruCQUlagf/Rw1P45u5/2u+F+I83DRyIKryM6prXl++X2yY0Ib0RXAlZ7Q==}
+    dependencies:
+      fastify-plugin: 4.5.1
+      helmet: 7.0.0
+    dev: false
+
+  /@fastify/under-pressure@8.3.0:
+    resolution: {integrity: sha512-ap1EePB9vHm8uQLM0nnaOeIMBLooNmAMTnccavBRwaXmu+acJFuSEQRVdMGRkW6viFDhdo5RGTcHzMBQyrucEA==}
+    dependencies:
+      '@fastify/error': 3.3.0
+      fastify-plugin: 4.5.1
     dev: false
 
   /@jridgewell/resolve-uri@3.1.1:
@@ -413,6 +433,17 @@ packages:
     resolution: {integrity: sha512-cIusKBIt/R/oI6z/1nyfe2FvGKVTohVRfvkOhvx0nCEW+xf5NoCXjAHcWp93uOUBchzYcsvPlrapAdX1uW+YGg==}
     dev: false
 
+  /fastify-healthcheck@4.4.0:
+    resolution: {integrity: sha512-goP2YYBp+inqrEFixZDxsoxFN8h219ZOzCFv1sMpleaxwbo5CmoLrVzrja6vCMa1LNx6aEvOcGaqLX5Oev1q/A==}
+    engines: {node: '>=14.15.0'}
+    dependencies:
+      '@fastify/under-pressure': 8.3.0
+    dev: false
+
+  /fastify-plugin@4.5.1:
+    resolution: {integrity: sha512-stRHYGeuqpEZTL1Ef0Ovr2ltazUT9g844X5z/zEBFLG8RYlpDiOCIG+ATvYEp+/zmc7sN29mcIMp8gvYplYPIQ==}
+    dev: false
+
   /fastify-type-provider-zod@1.1.9(fastify@4.22.2)(zod@3.22.2):
     resolution: {integrity: sha512-Ztnu1ZWJEKJouZvdTyfgjuVqS+A4JLoCbWBvFqFhfnrg6YQvEvW+5cJvP98kNbuV5gjfpWmHSOTi3BpkidJPQg==}
     peerDependencies:
@@ -484,6 +515,11 @@ packages:
   /has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
     engines: {node: '>=8'}
+    dev: false
+
+  /helmet@7.0.0:
+    resolution: {integrity: sha512-MsIgYmdBh460ZZ8cJC81q4XJknjG567wzEmv46WOBblDb6TUd3z8/GhgmsM9pn8g2B80tAJ4m5/d3Bi1KrSUBQ==}
+    engines: {node: '>=16.0.0'}
     dev: false
 
   /ieee754@1.2.1:

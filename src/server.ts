@@ -1,6 +1,12 @@
+import helmet from "@fastify/helmet";
+import healthcheck from "fastify-healthcheck";
+
 import { app } from "./clients";
 import { scheduleRoutes } from "./routes/schedule";
 import { tasksRoutes } from "./routes/tasks";
+
+app.register(helmet);
+app.register(healthcheck);
 
 // routes
 app.register(scheduleRoutes, { prefix: "/v1" });
