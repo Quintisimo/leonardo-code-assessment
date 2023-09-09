@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "scripts": {
     "generate": "prisma generate",
+    "postinstall": "pnpm generate",
     "studio": "prisma studio",
     "dev": "ts-node -r tsconfig-paths/register src/server.ts",
-    "postinstall": "pnpm generate",
+    "test": "vitest run",
     "format": "prettier . --write",
-    "test": "vitest run"
+    "lint": "denolint"
   },
   "author": "Quintus Cardozo",
   "devDependencies": {
     "@anatine/zod-mock": "^3.13.2",
     "@faker-js/faker": "^8.0.2",
+    "@node-rs/deno-lint": "^1.17.3",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/node": "^20.5.9",
     "prettier": "^3.0.3",

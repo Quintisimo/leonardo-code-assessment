@@ -75,7 +75,7 @@ describe.concurrent('Test schedule routes', () => {
   describe.concurrent('post /schedule', () => {
     it('create and return schedule if body is valid', async () => {
       const mockCreate = generateValidMockSchedule();
-      const { id, ...reqBody } = mockCreate;
+      const { id: _id, ...reqBody } = mockCreate;
 
       mockPrisma.schedule.create.mockResolvedValueOnce(mockCreate);
 

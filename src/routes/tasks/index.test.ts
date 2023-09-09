@@ -63,7 +63,7 @@ describe.concurrent('Test tasks routes', () => {
   describe.concurrent('post /tasks', () => {
     it('create and return tasks if body is valid', async () => {
       const mockCreate = generateValidMockTasks();
-      const { id, ...reqBody } = mockCreate;
+      const { id: _id, ...reqBody } = mockCreate;
 
       mockPrisma.tasks.create.mockResolvedValueOnce(mockCreate);
 
