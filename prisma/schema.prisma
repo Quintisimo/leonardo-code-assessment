@@ -6,7 +6,7 @@ generator client {
 }
 
 generator zod {
-  provider = "prisma-zod-generator"
+  provider = "zod-prisma"
 }
 
 datasource db {
@@ -15,20 +15,20 @@ datasource db {
 }
 
 model Schedule {
-  id         String   @id @default(uuid()) @db.Uuid
+  id         String   @id @default(uuid()) @db.Uuid /// @zod.uuid()
   account_id Int
   agent_id   Int
-  start_time DateTime
-  end_time   DateTime
+  start_time DateTime /// @zod.custom(z.string().datetime())
+  end_time   DateTime /// @zod.custom(z.string().datetime())
   Tasks      Tasks[]
 }
 
 model Tasks {
-  id          String   @id @default(uuid()) @db.Uuid
+  id          String   @id @default(uuid()) @db.Uuid /// @zod.uuid()
   account_id  Int
-  schedule_id String   @db.Uuid
+  schedule_id String   @db.Uuid /// @zod.uuid()
   schedule    Schedule @relation(fields: [schedule_id], references: [id])
-  start_time  DateTime
+  start_time  DateTime /// @zod.custom(z.string().datetime())
   duration    Int
   type        TaskType
 }
