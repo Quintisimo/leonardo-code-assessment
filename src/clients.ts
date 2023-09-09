@@ -1,10 +1,10 @@
-import Fastify from "fastify";
+import { PrismaClient } from '@prisma/client';
+import Fastify from 'fastify';
 import {
+  ZodTypeProvider,
   serializerCompiler,
   validatorCompiler,
-  ZodTypeProvider,
-} from "fastify-type-provider-zod";
-import { PrismaClient } from "@prisma/client";
+} from 'fastify-type-provider-zod';
 
 const prisma = new PrismaClient();
 const app = Fastify();
@@ -17,4 +17,5 @@ const appWithZod = app.withTypeProvider<ZodTypeProvider>();
 
 type App = typeof appWithZod;
 
-export { prisma, appWithZod as app, App };
+export { prisma, appWithZod as app };
+export type { App };

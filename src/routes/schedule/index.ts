@@ -1,7 +1,8 @@
-import { App, prisma } from "../../clients";
-import { ScheduleModel } from "../../../prisma/zod";
+import { z } from 'zod';
 
-import { z } from "zod";
+import { ScheduleModel } from 'prisma/zod';
+
+import { App, prisma } from 'src/clients';
 
 const UpsertSchema = ScheduleModel.omit({ id: true });
 const IdSchema = ScheduleModel.pick({ id: true });
@@ -9,7 +10,7 @@ const IdSchema = ScheduleModel.pick({ id: true });
 export async function scheduleRoutes(router: App) {
   // Create
   router.post(
-    "/schedule",
+    '/schedule',
     {
       schema: {
         body: UpsertSchema,
@@ -18,12 +19,12 @@ export async function scheduleRoutes(router: App) {
     async (req) =>
       prisma.schedule.create({
         data: req.body,
-      })
+      }),
   );
 
   // Read
   router.get(
-    "/schedule/:id",
+    '/schedule/:id',
     {
       schema: {
         params: IdSchema,
@@ -34,11 +35,11 @@ export async function scheduleRoutes(router: App) {
         where: {
           id: req.params.id,
         },
-      })
+      }),
   );
 
   router.get(
-    "/all-schedule",
+    '/all-schedule',
     {
       schema: {
         querystring: z.object({
@@ -51,12 +52,12 @@ export async function scheduleRoutes(router: App) {
       prisma.schedule.findMany({
         skip: req.query.skip,
         take: req.query.take,
-      })
+      }),
   );
 
   // Update
   router.put(
-    "/schedule/:id",
+    '/schedule/:id',
     {
       schema: {
         params: IdSchema,
@@ -69,12 +70,12 @@ export async function scheduleRoutes(router: App) {
         where: {
           id: req.params.id,
         },
-      })
+      }),
   );
 
   // Delete
   router.delete(
-    "/schedule/:id",
+    '/schedule/:id',
     {
       schema: {
         params: IdSchema,
@@ -85,6 +86,6 @@ export async function scheduleRoutes(router: App) {
         where: {
           id: req.params.id,
         },
-      })
+      }),
   );
 }
