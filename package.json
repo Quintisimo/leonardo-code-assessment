@@ -6,20 +6,27 @@
     "studio": "prisma studio",
     "dev": "ts-node -r tsconfig-paths/register src/server.ts",
     "postinstall": "pnpm generate",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "test": "vitest run"
   },
   "author": "Quintus Cardozo",
   "devDependencies": {
+    "@anatine/zod-mock": "^3.13.2",
+    "@faker-js/faker": "^8.0.2",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/node": "^20.5.9",
     "prettier": "^3.0.3",
     "prisma": "^5.2.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vite-tsconfig-paths": "^4.2.0",
+    "vitest": "^0.34.4",
+    "vitest-mock-extended": "^1.2.1"
   },
   "dependencies": {
     "@fastify/helmet": "^11.0.0",
     "@prisma/client": "5.2.0",
+    "date-fns": "^2.30.0",
     "fastify": "^4.22.2",
     "fastify-healthcheck": "^4.4.0",
     "fastify-type-provider-zod": "^1.1.9",

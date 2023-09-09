@@ -1,13 +1,32 @@
+import { isAfter } from 'date-fns';
+import { FastifyReply } from 'fastify';
 import { z } from 'zod';
 
 import { ScheduleModel } from 'prisma/zod';
 
-import { App, prisma } from 'src/clients';
+import { App } from 'src/clients';
+import { RoutesFunc } from 'src/types';
 
 const UpsertSchema = ScheduleModel.omit({ id: true });
 const IdSchema = ScheduleModel.pick({ id: true });
 
-export async function scheduleRoutes(router: App) {
+function endTimeAfterStartTime(
+  endTime: string,
+  startTime: string,
+  res: FastifyReply,
+) {
+  if (!isAfter(new Date(endTime), new Date(startTime))) {
+    const statusCode = 400;
+    res.status(statusCode);
+    res.send({
+      statusCode,
+      error: 'Bad Request',
+      message: 'End time should be after start time',
+    });
+  }
+}
+
+export const scheduleRoutes: RoutesFunc = async (router: App, { prisma }) => {
   // Create
   router.post(
     '/schedule',
@@ -15,6 +34,8 @@ export async function scheduleRoutes(router: App) {
       schema: {
         body: UpsertSchema,
       },
+      preHandler: async (req, res) =>
+        endTimeAfterStartTime(req.body.end_time, req.body.start_time, res),
     },
     async (req) =>
       prisma.schedule.create({
@@ -63,6 +84,32 @@ export async function scheduleRoutes(router: App) {
         params: IdSchema,
         body: UpsertSchema.partial(),
       },
+      preHandler: async (req, res) => {
+        let endTime = req.body.end_time;
+        let startTime = req.body.start_time;
+
+        if (startTime || endTime) {
+          if (!endTime) {
+            endTime = (
+              await prisma.schedule.findFirstOrThrow({
+                where: { id: req.params.id },
+                select: { end_time: true },
+              })
+            ).end_time.toISOString();
+          }
+
+          if (!startTime) {
+            startTime = (
+              await prisma.schedule.findFirstOrThrow({
+                where: { id: req.params.id },
+                select: { start_time: true },
+              })
+            ).start_time.toISOString();
+          }
+
+          return endTimeAfterStartTime(endTime, startTime, res);
+        }
+      },
     },
     async (req) =>
       prisma.schedule.update({
@@ -88,4 +135,4 @@ export async function scheduleRoutes(router: App) {
         },
       }),
   );
-}
+};

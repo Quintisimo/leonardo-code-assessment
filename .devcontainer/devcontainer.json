@@ -15,7 +15,8 @@
         "esbenp.prettier-vscode",
         "Prisma.prisma",
         "ms-azuretools.vscode-docker",
-        "rangav.vscode-thunder-client"
+        "rangav.vscode-thunder-client",
+        "ZixuanChen.vitest-explorer"
       ]
     }
   },

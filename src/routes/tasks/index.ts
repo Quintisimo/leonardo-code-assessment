@@ -2,12 +2,13 @@ import { z } from 'zod';
 
 import { TasksModel } from 'prisma/zod';
 
-import { App, prisma } from 'src/clients';
+import { App } from 'src/clients';
+import { RoutesFunc } from 'src/types';
 
 const UpsertSchema = TasksModel.omit({ id: true });
 const IdSchema = TasksModel.pick({ id: true });
 
-export async function tasksRoutes(router: App) {
+export const tasksRoutes: RoutesFunc = async (router: App, { prisma }) => {
   // Create
   router.post(
     '/tasks',
@@ -88,4 +89,4 @@ export async function tasksRoutes(router: App) {
         },
       }),
   );
-}
+};
