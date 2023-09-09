@@ -1,22 +1,10 @@
-import { z } from "zod";
+import { app } from "./clients";
+import { scheduleRoutes } from "./routes/schedule";
+import { tasksRoutes } from "./routes/tasks";
 
-import { app, prisma } from "./clients";
-
-app.route({
-  method: "GET",
-  url: "/",
-  schema: {
-    querystring: z.object({
-      name: z.string().min(4),
-    }),
-    response: {
-      200: z.string(),
-    },
-  },
-  handler: (req, res) => {
-    res.send(req.query.name);
-  },
-});
+// routes
+app.register(scheduleRoutes, { prefix: "/v1" });
+app.register(tasksRoutes, { prefix: "/v1" });
 
 app.listen({ port: 3000 }, (err) => {
   if (err) {

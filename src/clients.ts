@@ -15,4 +15,6 @@ app.setSerializerCompiler(serializerCompiler);
 
 const appWithZod = app.withTypeProvider<ZodTypeProvider>();
 
-export { prisma, appWithZod as app };
+type App = typeof appWithZod;
+
+export { prisma, appWithZod as app, App };
