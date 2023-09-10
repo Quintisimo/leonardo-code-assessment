@@ -2,3 +2,4 @@ node_modules
 zod
 pnpm-lock.yaml
 dist
+coverage

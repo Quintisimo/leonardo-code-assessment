@@ -8,7 +8,7 @@
     "dev": "ts-node -r tsconfig-paths/register src/server.ts",
     "build": "tsc -p tsconfig.build.json && resolve-tspaths -p tsconfig.build.json",
     "start": "node dist/src/server.js",
-    "test": "vitest run",
+    "test": "vitest run --coverage",
     "format": "prettier . --write",
     "lint": "denolint"
   },
@@ -19,6 +19,7 @@
     "@node-rs/deno-lint": "^1.17.3",
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/node": "^20.5.9",
+    "@vitest/coverage-v8": "^0.34.4",
     "prettier": "^3.0.3",
     "prisma": "^5.2.0",
     "resolve-tspaths": "^0.8.15",

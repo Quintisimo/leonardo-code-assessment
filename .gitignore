@@ -1,5 +1,6 @@
 node_modules
 zod
 dist
+coverage
 .env
 .tsbuildinfo
