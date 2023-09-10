@@ -29,6 +29,9 @@ dependencies:
   zod-prisma:
     specifier: ^0.5.4
     version: 0.5.4(prisma@5.2.0)(zod@3.22.2)
+  zod-validation-error:
+    specifier: ^1.5.0
+    version: 1.5.0(zod@3.22.2)
 
 devDependencies:
   '@anatine/zod-mock':
@@ -2069,6 +2072,15 @@ packages:
     resolution: {integrity: sha512-fjUZh4nQ1s6HMccgIeE0VP4QG/YRGPmyjO9sAh890aQKPEk3nqbfUXhMFaC+Dr5KvYBm8BCyvfpZf2jY9aGSsw==}
     peerDependencies:
       zod: ^3.21.4
+    dependencies:
+      zod: 3.22.2
+    dev: false
+
+  /zod-validation-error@1.5.0(zod@3.22.2):
+    resolution: {integrity: sha512-/7eFkAI4qV0tcxMBB/3+d2c1P6jzzZYdYSlBuAklzMuCrJu5bzJfHS0yVAS87dRHVlhftd6RFJDIvv03JgkSbw==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      zod: ^3.18.0
     dependencies:
       zod: 3.22.2
     dev: false

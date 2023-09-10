@@ -6,7 +6,9 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod';
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient({
+  errorFormat: 'minimal',
+});
 const app = Fastify();
 
 // Add schema validator and serializer
