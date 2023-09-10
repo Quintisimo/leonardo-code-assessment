@@ -1,15 +1,11 @@
 {
   "compilerOptions": {
-    /* Projects */
-    "incremental": true /* Save .tsbuildinfo files to allow for incremental compilation of projects. */,
-    "composite": true /* Enable constraints that allow a TypeScript project to be used with project references. */,
-    "tsBuildInfoFile": "./.tsbuildinfo" /* Specify the path to .tsbuildinfo incremental compilation file. */,
-
     /* Language and Environment */
     "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
 
     /* Modules */
     "module": "commonjs" /* Specify what module code is generated. */,
+    "rootDir": "." /* Specify the root folder within your source files. */,
     "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
       "prisma/*": ["prisma/*"],

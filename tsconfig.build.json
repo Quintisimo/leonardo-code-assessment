@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["src/**/*", "prisma/**/*"],
+  "exclude": ["**/*.test.ts"],
+  "compilerOptions": {
+    /* Emit */
+    "outDir": "dist" /* Specify an output folder for all emitted files. */
+  }
+}

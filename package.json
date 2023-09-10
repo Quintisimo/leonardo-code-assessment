@@ -6,6 +6,8 @@
     "postinstall": "pnpm generate",
     "studio": "prisma studio",
     "dev": "ts-node -r tsconfig-paths/register src/server.ts",
+    "build": "tsc -p tsconfig.build.json && resolve-tspaths -p tsconfig.build.json",
+    "start": "node dist/src/server.js",
     "test": "vitest run",
     "format": "prettier . --write",
     "lint": "denolint"
@@ -19,7 +21,9 @@
     "@types/node": "^20.5.9",
     "prettier": "^3.0.3",
     "prisma": "^5.2.0",
+    "resolve-tspaths": "^0.8.15",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.2.2",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^0.34.4",
@@ -32,7 +36,6 @@
     "fastify": "^4.22.2",
     "fastify-healthcheck": "^4.4.0",
     "fastify-type-provider-zod": "^1.1.9",
-    "tsconfig-paths": "^4.2.0",
     "zod": "^3.22.2",
     "zod-prisma": "^0.5.4"
   }
